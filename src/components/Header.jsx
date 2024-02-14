@@ -1,8 +1,10 @@
 import React from "react";
 import { Badge } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+    const selector = useSelector((state) => state.items.cart);
   return (
     <header
       style={{
@@ -23,11 +25,12 @@ const Header = () => {
         <h2
           style={{
             color: "white",
+            fontSize: "25px"
           }}
         >
           Products
         </h2>
-        <Badge badgeContent={5} color="secondary">
+        <Badge badgeContent={selector.length} showZero color="secondary">
           <ShoppingCartIcon
             style={{
               color: "white",
