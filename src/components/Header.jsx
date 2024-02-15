@@ -2,9 +2,12 @@ import React from "react";
 import { Badge } from "@mui/material";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { useSelector } from "react-redux";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-    const selector = useSelector((state) => state.items.cart);
+  const selector = useSelector((state) => state.items.cart);
+  const navigate = useNavigate();
   return (
     <header
       style={{
@@ -25,12 +28,22 @@ const Header = () => {
         <h2
           style={{
             color: "white",
-            fontSize: "25px"
+            fontSize: "25px",
           }}
         >
           Products
         </h2>
-        <Badge badgeContent={selector.length} showZero color="secondary">
+        <Badge
+          style={{
+            cursor: "pointer"
+          }}
+          onClick={() => {
+            navigate("/cart");
+          }}
+          badgeContent={selector.length}
+          showZero
+          color="secondary"
+        >
           <ShoppingCartIcon
             style={{
               color: "white",

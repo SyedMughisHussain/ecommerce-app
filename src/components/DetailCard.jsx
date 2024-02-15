@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../features/cart/cartSlice";
+import Swal from "sweetalert2";
 
 const DetailCard = (props) => {
   const dispatch = useDispatch();
@@ -35,6 +36,13 @@ const DetailCard = (props) => {
                 description: props.description,
               })
             );
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Item Added to Cart Successfully.",
+              showConfirmButton: false,
+              timer: 1500
+            });
           }}
           style={{
             backgroundColor: "blue",
