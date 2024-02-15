@@ -34,6 +34,7 @@ const DetailCard = (props) => {
                 title: props.title,
                 price: props.price,
                 description: props.description,
+                image: props.image
               })
             );
             Swal.fire({

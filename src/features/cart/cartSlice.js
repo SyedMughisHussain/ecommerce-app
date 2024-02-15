@@ -12,9 +12,12 @@ export const cartSlice = createSlice({
         title: action.payload.title,
         price: action.payload.price,
         description : action.payload.description,
+        image: action.payload.image, 
       });
     },
-    deleteFromCart: (state, action) => {},
+    deleteFromCart: (state, action) => {
+      state.cart.splice(action.payload, 1)
+    },
   },
 });
 
