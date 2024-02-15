@@ -1,17 +1,19 @@
-import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { Button, CardActionArea, CardActions } from '@mui/material';
+import * as React from "react";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Typography from "@mui/material/Typography";
+import { Button, CardActionArea, CardActions } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function ShoppingCard(props) {
+  const description = props.description.slice(0, 70);
   return (
     <Card sx={{ maxWidth: 290 }}>
       <CardActionArea>
         <CardMedia
           sx={{
-            objectFit: "contain"
+            objectFit: "contain",
           }}
           component="img"
           height="140"
@@ -23,13 +25,16 @@ export default function ShoppingCard(props) {
             {props.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {props.description}
+            {description}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button variant='contained' color="primary">
-          Detail Page
+        <Button variant="contained" color="primary">
+          <Link style={{
+            textDecoration: "none",
+            color: "white"
+          }} to={`/single/${props.id}`}>Detail Page</Link>
         </Button>
       </CardActions>
     </Card>

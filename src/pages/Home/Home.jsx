@@ -36,8 +36,6 @@ const Home = () => {
             padding: "5px"
         }}>
           {products.map((product, index) => {
-            // const value = product.description.length - 150;
-            // console.log(value); 
             return (
               <div style={{
                 marginLeft: "20px",
@@ -47,6 +45,7 @@ const Home = () => {
                   title={product.title}
                   image={product.image}
                   description={product.description}
+                  id={product.id}
                 />
               </div>
             );
