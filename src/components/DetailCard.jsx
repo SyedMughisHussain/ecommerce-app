@@ -1,6 +1,11 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../features/cart/cartSlice";
 
 const DetailCard = (props) => {
+  const dispatch = useDispatch();
+  const selector = useSelector((state) => state.items.cart);
+  console.log(selector);
   return (
     <div
       style={{
@@ -22,6 +27,15 @@ const DetailCard = (props) => {
         <h2>{props.price}$</h2>
         <p>{props.description}</p>
         <button
+          onClick={() => {
+            dispatch(
+              addToCart({
+                title: props.title,
+                price: props.price,
+                description: props.description,
+              })
+            );
+          }}
           style={{
             backgroundColor: "blue",
             padding: "15px",
